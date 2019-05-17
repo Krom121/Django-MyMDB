@@ -1,4 +1,5 @@
 from django.views.generic import ListView, DetailView
+from django.core.paginator import Paginator
 from core.models import Movie
 
 class MovieDetail(DetailView):
@@ -6,3 +7,4 @@ class MovieDetail(DetailView):
 
 class MovieList(ListView):
     model = Movie
+    paginator = Paginator(Movie,3)
