@@ -1,5 +1,6 @@
 from django import forms
-from core.models import Vote
+from django.contrib.auth import get_user_model
+from core.models import Vote, Movie
 
 class VoteForm(forms.ModelForm):
     
@@ -15,11 +16,12 @@ class VoteForm(forms.ModelForm):
         disabled=True
     )
 
-    value = forms.ModelChoiceField(
+    value = forms.ChoiceField(
         label='Vote',
         widget=forms.RadioSelect,
         choices=Vote.VALUE_CHOICES,
     )
+
 
     class Meta:
         model = Vote
